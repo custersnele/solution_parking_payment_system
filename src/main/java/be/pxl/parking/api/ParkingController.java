@@ -3,6 +3,7 @@ package be.pxl.parking.api;
 import be.pxl.parking.api.input.ParkingSessionStartCommand;
 import be.pxl.parking.api.input.ParkingSessionStopCommand;
 import be.pxl.parking.service.ParkingService;
+import com.sun.jdi.VoidValue;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,8 +27,9 @@ public class ParkingController {
     }
 
     @PostMapping("/parking/start")
-    public void startParkingSession(@RequestBody @Valid ParkingSessionStartCommand command) {
+    public ResponseEntity<Void> startParkingSession(@RequestBody @Valid ParkingSessionStartCommand command) {
         parkingService.startParkingSession(command);
+        return ResponseEntity.accepted().build();
     }
 
     @PostMapping("/parking/stop")

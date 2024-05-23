@@ -87,10 +87,10 @@ public class ParkingService {
             public Predicate toPredicate(Root<ParkingSession> root, CriteriaQuery<?> query, CriteriaBuilder builder) {
                 List<Predicate> allPredicates = new ArrayList<>();
                 if (filter.licensePlate() != null) {
-                    allPredicates.add(builder.like(builder.lower(root.join("licensePlate").get("licensePlate")), filter.licensePlate()));
+                    allPredicates.add(builder.equal(root.join("licensePlate").get("plateNumber"), filter.licensePlate()));
                 }
                 if (filter.parkingName() != null) {
-                    allPredicates.add(builder.equal(root.join("parking").get("name"), filter.parkingName()));
+                    allPredicates.add(builder.like(root.join("parking").get("name"), "%" + filter.parkingName() + "%"));
                 }
                 if (filter.parkingSessionStatus() != null) {
                     allPredicates.add(builder.equal(root.get("status"), filter.parkingSessionStatus()));
