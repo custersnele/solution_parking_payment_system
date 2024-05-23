@@ -1,0 +1,6 @@
+uuid;name;street;zipcode;weekendHourlyRate;weekdayHourlyRate;dailyRate
+2993795c-e648-4526-8011-67c7891c6eb2;Q-Park Centrum;Bakkerslaan;3500;Hasselt;2.5;1.5;10.0
+b1728334-de9d-4458-b4eb-e362c8470f82;Parkeergarage West;Peter Rubensplein;3680;Maaseik;3.0;2.0;12.0
+94a8e143-3755-46ea-9e92-f9386d30ce67;Q-Park Oost;Grote baan;3600;Genk;2.75;1.75;11.0
+10d10f17-29c3-42c9-9ef8-744ba43cc52b;Parkeerplaats Noord;Lindelaan;3583;Beringen;3.25;2.25;13.0
+00588b89-3030-4c0b-8027-bf631cc28cef;Garage Zuid;Markt;3500;Hasselt;2.0;1.0;9.0

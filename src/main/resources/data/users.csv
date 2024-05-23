@@ -1,0 +1,11 @@
+firstName;lastName;phone;email;bank;account;licensePlate(s)
+John;Smith;123-456-7800;john@example.com;KBC;BE6005332903573466;1-ABC-015
+Jane;Doe;123-456-7801;jane@mywork.com;BELFIUS;BE9461614622773515;2-TUB-003;1-VAZ-123
+Alice;Johnson;123-456-7802;a.johnson@test.be;BELFIUS;BE6508559938317070;1-QPT-587
+Bob;Williams;123-456-7803;bobby@hotmail.com;KBC;BE5000694390652372;2-ECB-542
+Charlie;Brown;123-456-7804;charlie@gmail.com;BELFIUS;BE4956670257702327;1-CHR-543
+Diana;Jones;123-456-7805;diana.jones@travellling.com;BELFIUS;BE5218145569719033;BAT-542;ASN-373
+Eve;Garcia;123-456-7806;eve@gmail.com;KBC;BE4212956571350544;TOP EVE;123GO
+Frank;Miller;123-456-7807;fmiller@gmail.com;BELFIUS;BE2968541425415324;1-UUV-578
+Grace;Davis;123-456-7808;grace@gd.com;BELFIUS;BE7070091787355703;DAVIS
+Hank;Rodriguez;123-456-7809;hank@hardworker.com;KBC;BE1154384213887805;2-HRE-256
