@@ -4,11 +4,9 @@ import be.pxl.parking.api.input.ParkingSessionStartCommand;
 import be.pxl.parking.api.input.ParkingSessionStopCommand;
 import be.pxl.parking.api.output.ParkingSessionDto;
 import be.pxl.parking.config.SystemClock;
-import be.pxl.parking.domain.LicensePlate;
-import be.pxl.parking.domain.Parking;
-import be.pxl.parking.domain.ParkingSession;
-import be.pxl.parking.domain.ParkingSessionStatus;
+import be.pxl.parking.domain.*;
 import be.pxl.parking.exception.ResourceNotFoundException;
+import be.pxl.parking.external.PaymentRequestService;
 import be.pxl.parking.external.SmsService;
 import be.pxl.parking.repository.LicensePlateRepository;
 import be.pxl.parking.repository.ParkingRepository;
@@ -38,17 +36,20 @@ public class ParkingService {
     private final SystemClock systemClock;
     private final ParkingSessionRepository parkingSessionRepository;
     private final SmsService smsService;
+    private final PaymentRequestService paymentRequestService;
 
     public ParkingService(ParkingRepository parkingRepository,
                           LicensePlateRepository licensePlateRepository,
                           SystemClock systemClock,
                           ParkingSessionRepository parkingSessionRepository,
-                          SmsService smsService) {
+                          SmsService smsService,
+                          PaymentRequestService paymentRequestService) {
         this.parkingRepository = parkingRepository;
         this.licensePlateRepository = licensePlateRepository;
         this.systemClock = systemClock;
         this.parkingSessionRepository = parkingSessionRepository;
         this.smsService = smsService;
+        this.paymentRequestService = paymentRequestService;
     }
 
     public List<UUID> getParkingsUUID() {
@@ -71,6 +72,9 @@ public class ParkingService {
         ParkingSession parkingSession = parkingSessionRepository.findParkingSessionByLicensePlate_PlateNumberAndStatus(command.licensePlate(), ParkingSessionStatus.STARTED)
                 .orElseThrow(() -> new ResourceNotFoundException("parking session started", "licensePlate", command.licensePlate()));
         parkingSession.endSession(now);
+        User user = parkingSession.getLicensePlate().getUser();
+        paymentRequestService.sendPaymentRequest(user.getBankAccountDetails().getBank(), user.getBankAccountDetails().getAccountNumber(), parkingSession.getPrice());
+        parkingSession.setPaymentRequested();
     }
 
 

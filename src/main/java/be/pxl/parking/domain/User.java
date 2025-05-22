@@ -16,6 +16,8 @@ public class User {
     private String lastName;
     @Embedded
     private ContactInfo contactInfo;
+    @Embedded
+    private BankAccountDetails bankAccountDetails;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<LicensePlate> licensePlates = new ArrayList<>();
@@ -30,8 +32,7 @@ public class User {
         // JPA only
     }
 
-    @Embedded
-    private BankAccountDetails bankAccountDetails;
+
 
     public void setBankAccountDetails(BankAccountDetails bankAccountDetails) {
         this.bankAccountDetails = bankAccountDetails;
