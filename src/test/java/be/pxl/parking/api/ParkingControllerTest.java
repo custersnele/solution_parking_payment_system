@@ -4,15 +4,14 @@ import be.pxl.parking.api.input.ParkingSessionStartCommand;
 import be.pxl.parking.builder.ParkingSessionStartCommandBuilder;
 import be.pxl.parking.service.ParkingService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.UUID;
@@ -27,7 +26,7 @@ public class ParkingControllerTest {
 		@Autowired
 		private MockMvc mockMvc;
 
-		@MockBean
+		@MockitoBean
 		private ParkingService parkingService;
 
 		@Autowired
